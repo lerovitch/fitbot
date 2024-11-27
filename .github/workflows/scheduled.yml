@@ -2,7 +2,7 @@ name: Scheduled FitBot run
 
 on:
   schedule:
-  - cron: "1 0 * * *"
+  - cron: "40 1 * * 0-6"
 
 jobs:
   run:
@@ -12,5 +12,31 @@ jobs:
         uses: actions/checkout@v2
       - name: Build docker image
         run: make docker/build
+      - name: Sleep until specific time
+        run: |
+          target_hour=1
+          target_minute=41
+          target_second=0
+          current_hour=$(date +%H)
+          current_minute=$(date +%M)
+          current_second=$(date +%S)
+          # Remove leading zeros
+          current_hour=$((10#$current_hour))
+          current_minute=$((10#$current_minute))
+          current_second=$((10#$current_second))
+          
+          target_time_in_seconds=$((target_hour * 3600 + target_minute * 60 + target_second))
+          current_time_in_seconds=$((current_hour * 3600 + current_minute * 60 + current_second))
+          echo "current_hour: $current_hour $current_minute $current_second"
+          echo "target_time_in_seconds: $target_time_in_seconds"
+          echo "current_time_in_seconds: $current_time_in_seconds"
+          
+          if [ $current_time_in_seconds -ge $target_time_in_seconds ]; then
+            sleep_duration=0
+          else
+            sleep_duration=$((target_time_in_seconds - current_time_in_seconds))
+          fi
+          echo "Sleeping for $sleep_duration seconds until the target time"
+          sleep $sleep_duration
       - name: Run fitbot
-        run: docker run -e email=${{ secrets.EMAIL }} -e password=${{ secrets.PASSWORD }} -e booking-goals={'\"0\":{\"time\":\"1815\"\,\"name\":\"ARIBAU\"}\,\"2\":{\"time\":\"1815\"\,\"name\":\"ARIBAU\"}'} -e box-name=lahuellacrossfit -e box-id=3984 -e days-in-advance=3 fitbot
+        run: docker run -e email=${{ secrets.EMAIL }} -e password=${{ secrets.PASSWORD }} -e booking-goals='{'\"5\":{\"time\":\"1000\"\,\"name\":\"CrossFit\"}'} ' -e box-name=wezonepacifico -e box-id=9851 -e days-in-advance=2 fitbot
