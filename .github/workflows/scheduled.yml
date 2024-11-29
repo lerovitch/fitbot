@@ -39,4 +39,4 @@ jobs:
           echo "Sleeping for $sleep_duration seconds until the target time"
           sleep $sleep_duration
       - name: Run fitbot
-        run: docker run -e email=${{ secrets.EMAIL }} -e password=${{ secrets.PASSWORD }} -e booking-goals='{'\"5\":{\"time\":\"1000\"\,\"name\":\"CrossFit\"}'} ' -e box-name=wezonepacifico -e box-id=9851 -e days-in-advance=2 fitbot
+        run: docker run -e email=${{ secrets.EMAIL }} -e password=${{ secrets.PASSWORD }} -e booking-goals='{\"0\":{\"time\":\"0700\",\"name\":\"Crossfit\"},\"1\":{\"time\":\"0700\",\"name\":\"Crossfit\"},\"2\":{\"time\":\"0700\",\"name\":\"Crossfit\"},\"3\":{\"time\":\"0700\",\"name\":\"Crossfit\"},\"4\":{\"time\":\"0700\",\"name\":\"Crossfit\"}}' -e box-name=wezonepacifico -e box-id=9851 -e days-in-advance=2 fitbot
