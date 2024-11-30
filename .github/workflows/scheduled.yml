@@ -34,9 +34,9 @@ jobs:
           echo "current_time_in_seconds: $current_time_in_seconds"
           
           if [ $current_time_in_seconds -ge $target_time_in_seconds ]; then
-            sleep_duration=0
-          else
             sleep_duration=$((86400 + target_time_in_seconds - current_time_in_seconds))
+          else
+            sleep_duration=$((target_time_in_seconds - current_time_in_seconds))
           fi
           echo "Sleeping for $sleep_duration seconds until the target time"
           # sleep $sleep_duration
