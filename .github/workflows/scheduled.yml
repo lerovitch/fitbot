@@ -13,7 +13,7 @@ jobs:
       - name: Build docker image
         run: make docker/build
       - name: Install tzdata
-        run: sudp apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends tzdata
+        run: sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y --no-install-recommends tzdata
       - name: Sleep until specific time
         run: |
           target_hour=0
