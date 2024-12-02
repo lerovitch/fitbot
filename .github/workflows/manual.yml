@@ -63,5 +63,5 @@ jobs:
           echo "Sleeping for $sleep_duration seconds until the target time"
           #sleep $sleep_duration
     - name: Run fitbot
-      run: docker run -e email=${{ secrets.EMAIL }} -e password=${{ secrets.PASSWORD }} -e booking-goals='{\"0\":{\"time\":\"0700\",\"name\":\"CrossFit\"},\"1\":{\"time\":\"0700\",\"name\":\"CrossFit\"},\"2\":{\"time\":\"1330\",\"name\":\"CrossFit\"},\"3\":{\"time\":\"0700\",\"name\":\"Gymnastics\"},\"4\":{\"time\":\"0700\",\"name\":\"CrossFit\"}}' -e box-name='Wezone Pacifico' -e box-id=9851 -e days-in-advance=2 fitbot
+      run: docker run -e email=${{ secrets.EMAIL }} -e password=${{ secrets.PASSWORD }} -e booking-goals='{\"0\":{\"time\":\"0700\",\"name\":\"CrossFit\"},\"1\":{\"time\":\"0700\",\"name\":\"CrossFit\"},\"2\":{\"time\":\"1330\",\"name\":\"CrossFit\"},\"3\":{\"time\":\"0700\",\"name\":\"Gymnastics\"},\"4\":{\"time\":\"0700\",\"name\":\"CrossFit\"}}' -e box-name='"Wezone Pacifico"' -e box-id=9851 -e days-in-advance=2 fitbot
 
