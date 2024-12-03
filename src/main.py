@@ -41,6 +41,7 @@ def main(
     email, password, booking_goals, box_name, box_id, days_in_advance, family_id=None
 ):
     target_day = datetime.today() + timedelta(days=days_in_advance)
+    print(target_day)
     target_time, target_name = get_booking_goal_time(target_day, booking_goals)
     client = AimHarderClient(
         email=email, password=password, box_id=box_id, box_name=box_name
