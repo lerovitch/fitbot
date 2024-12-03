@@ -14,6 +14,7 @@ from exceptions import (
     BookingFailed,
     IncorrectCredentials,
     TooManyWrongAttempts,
+    MESSAGE_BOOKING_FAILED_UNKNOWN,
     MESSAGE_BOOKING_FAILED_NO_CREDIT,
 )
 
@@ -78,4 +79,4 @@ class AimHarderClient:
                 # booking went fine
                 return
             print(response["errorMssgLang"], response["errorMssg"])
-        raise BookingFailed(response.text)
+        raise BookingFailed(MESSAGE_BOOKING_FAILED_UNKNOWN)
