@@ -18,4 +18,4 @@ else
 sleep_duration=$((target_time_in_seconds - current_time_in_seconds))
 fi
 echo "Sleeping for $sleep_duration seconds until the target time"
-sleep $sleep_duration
+#sleep $sleep_duration
