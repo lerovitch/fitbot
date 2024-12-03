@@ -72,8 +72,11 @@ class AimHarderClient:
             response_json = response.json()
             if "bookState" in response_json and response_json["bookState"] == -2:
                 raise BookingFailed(MESSAGE_BOOKING_FAILED_NO_CREDIT)
-            if "errorMssg" not in response_json and "errorMssgLang" not in response_json:
+            if (
+                "errorMssg" not in response_json
+                and "errorMssgLang" not in response_json
+            ):
                 # booking went fine
                 return
-            print(response['errorMssgLang'], response['errorMssg'])
+            print(response["errorMssgLang"], response["errorMssg"])
         raise BookingFailed(response.text)
