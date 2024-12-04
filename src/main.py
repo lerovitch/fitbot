@@ -51,15 +51,13 @@ def main(
     classes = client.get_classes(target_day, family_id)
     classes_to_book = target_name.split("|")
     class_booked = False
-    for class_to_book in classes_to_book: 
+    for class_to_book in classes_to_book:
         try:
             class_id = get_class_to_book(classes, target_time, class_to_book)
             print(f"booking `{target_day}` `{class_id}` `{class_to_book}`")
             client.book_class(target_day, class_id, family_id)
         except NoBookingGoal as e:
             print(e)
-
-
 
 
 if __name__ == "__main__":
