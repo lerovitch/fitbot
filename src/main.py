@@ -14,8 +14,6 @@ from exceptions import (
 def get_booking_goal_time(day: datetime, booking_goals):
     """Get the booking goal that satisfies the given day of the week"""
     try:
-        weekday = str(day.weekday())
-
         return (
             booking_goals[str(day.weekday())]["time"],
             booking_goals[str(day.weekday())]["name"],
@@ -50,7 +48,6 @@ def main(
     )
     classes = client.get_classes(target_day, family_id)
     classes_to_book = target_name.split("|")
-    class_booked = False
     for class_to_book in classes_to_book:
         try:
             class_id = get_class_to_book(classes, target_time, class_to_book)
