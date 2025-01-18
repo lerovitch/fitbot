@@ -1,6 +1,6 @@
 #!/bin/bash
 
-target_hour=0
+target_hour=7
 target_minute=00
 target_second=0
 current_hour=$(TZ="Europe/Madrid" date +%-H)
