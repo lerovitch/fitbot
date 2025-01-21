@@ -79,5 +79,4 @@ class AimHarderClient:
                 # booking went fine
                 return
             print(response_json)
-            print(response_json["errorMssgLang"], response_json["errorMssg"])
         raise BookingFailed(MESSAGE_BOOKING_FAILED_UNKNOWN)
