@@ -2,6 +2,8 @@
 
 Python script to automate your booking sessions in [aimharder.com](http://aimharder.com) platform
 
+for own usage
+
 ## Usage
 
 Having docker installed you only need to do the following command:
